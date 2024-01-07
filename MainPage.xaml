@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiMediaElement.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <toolkit:MediaElement Source="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                  ShouldShowPlaybackControls="True"
+                                  BackgroundColor="AliceBlue"
+                                  x:Name="mediaElement"/>
+
+            <HorizontalStackLayout BindingContext="{x:Reference mediaElement}"
+                                   HorizontalOptions="Center"
+                                   Spacing="10">
+                
+                <Button Text="Play"
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="OnPlayPauseButtonClicked">
+                </Button>
+                <Button Text="Stop"
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="OnStopButtonClicked">
+                </Button>
+            </HorizontalStackLayout>
+            <Slider Maximum="1.0"
+            Minimum="0.0"
+            Value="{Binding Volume}"
+                    ValueChanged="Slider_ValueChanged"  
+            Rotation="270"
+            WidthRequest="100" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
